@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/enter.css">
+    <script src = 'js/jquery-1.10.1.min.js'></script>
+	<script src = 'js/ajax.js'></script>
+	<script>
+		$(function(){
+			$(".enter_text1").hover(function(){
+				$(".img1").stop().animate({width: 165},300)
+			},function(){
+				$(".img1").stop().animate({width: 0},300)
+			})
+
+			// 登录选项卡-扫码
+			$(".erweima").click(function(){
+				$(".erweima").css("color","#000");
+				$(".login").css("color","#999");
+				$(".enter_text2").css("display"," table-cell");
+				$(".enter_text3").css("display","none");
+			});
+			// 账号
+			$(".login").click(function(){
+				$(".login").css("color","#000");
+				$(".erweima").css("color","#999");
+				$(".enter_text2").css("display"," none");
+				$(".enter_text3").css("display","block");
+			});
+
+			// 登录表单验证
+			var oBtn = document.getElementById('sub1');
+    			var oUsername =document.getElementById('username');
+    			var oPassword =document.getElementById('password');
+    			oBtn.onclick = function(){
+    				var str =`username=${oUsername.value}&password=${oPassword.value}`;
+    				ajax({
+    					method:"post",
+    					url:"enter.php",
+    	       			data:str,
+    					success:function(data){
+    						// alert(data);
+    						if(data =="登陆成功"){
+    							location.assign("第五大道.html")
+    						$(".none_1").css("display","none")
+    						}else{
+    						$(".none_1").css("display","block")
+    						}
+    					},
+    					error:function(msg){
+    						alert(msg)
+    					}
+    				})
+    			};
+		})
+
+	</script>
+</head>
+<body>
+	<!-- header -->
+	<div class="header">
+		<div class="header_left">
+			<a href="第五大道.html" class="register_logo"></a>
+			<span class="line"></span>
+			<span class="text">欢迎登录</span>
+			<div class="header_right">
+				<i></i>
+				<p>客服热线：4008-6767-38</p>
+			</div>
+		</div>
+	</div>
+	<!-- 登录框 -->
+	<div class="center">
+		<div class="center_1">
+			<div class="enter">
+				<ul class="enter_head">
+					<li class="erweima">扫码登录</li>
+					丨
+					<li class="login" style="color:#999;">账户登录</li>
+				</ul>
+				<!-- 登录正文 -->
+				<div class="enter_text">
+					<div class="enter_text1">
+						<!--扫码登录  -->
+						<div class="enter_text2">
+							<div class="code">
+								<img style="display: inline-block;" src="http://m.5lux.com/api/gen2qrcode?t=1543389907502" alt="">
+								<img class="img1" src="images/exqcode.png" alt="">
+							</div>
+							<p class="start_text">打开<a href="#" style="color:#ff9900;text-decoration: none;">第五大道APP</a>扫一扫登录
+								</br></br>
+							<a href="register.html" class="a1">立即注册有惊喜 ></a>
+							</p>
+						</div>
+						<!-- 账号登录 -->
+						<div class="enter_text3">
+							<form action="" class="enter_text4">
+								<input type="text" placeholder="邮箱/手机号/账号" id="username">
+								<input type="password" placeholder="密码" id="password">
+								<div class="none">
+									<div class="none_1">
+										<i></i>
+										<p>账户名与密码不匹配，请重新输入！</p>
+									</div>
+								</div>
+								<input type="button" value="立即登录" id="sub1">
+								<ul>
+									<li class="left_li" style="float: left;">
+										<label for=""></label>
+										<p>自动登录</p>
+									</li>
+									<li class="right_li" style="float: right;">
+										<a href="register.html" style="color:#ff9900;">立即注册</a>
+										丨
+										<a href="#" style="color:#999;">忘记密码</a>
+									</li>
+								</ul>
+							</form>
+						</div>
+						<nav></nav>
+						<div class="enter_footer">
+							<ul>
+								<li><a href=""><i class="wx"></i></a></li>
+								<li><a href=""><i class="qq"></i></a></li>
+								<li><a href=""><i class="wb"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- footer -->
+	<div class="footer">
+        <div class="footer_1">
+            <div class="footer_top">
+                <ul>
+                    <li class="l1">
+                        <a href="#"><img src="images/footer_message01.jpg" alt=""></a>
+                        <div class="footer_top_1">
+                            <p class="pp">正品保障</p>
+                            <p class="ppp"><a href="#">品牌授权,官方验真</a></p>
+                        </div>
+                    </li>
+                    <li class="l2">
+                        <a href="#"><img src="images/footer_message02.jpg" alt=""></a>
+                        <div>
+                            <p class="pp">专柜发货</p>
+                            <p class="ppp"><a href="">专柜直接或到店自提</a></p>
+                        </div>
+                    </li>
+                    <li class="l3">
+                        <a href="#"><img src="images/footer_message03.jpg" alt=""></a>
+                        <div>
+                            <p class="pp">无忧售后</p>
+                            <p class="ppp"><a href="#">7天无理由退换货</a></p>
+                        </div>
+                    </li>
+                    <li class="l4">
+                        <a href="#"><img src="images/footer_message04.jpg" alt=""></a>
+                        <div>
+                            <p class="pp">VIP服务</p>
+                            <p class="ppp"><a href="#">享品牌会员售前售后服务</a></p>
+                        </div>
+                    </li>
+                    <li class="l5">
+                        <a href="#"><img src="images/footer_message05.jpg" alt=""></a>
+                        <div>
+                            <p class="pp">权威荣誉</p>
+                            <p class="ppp"><a href="#">商务部授予诚信示范企业</a></p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer_ctr">
+                <div class="footer_ctr1">
+                    <ul>
+                        <li>
+                            <span class="sp01">服务保障</span>
+                            <span><a href="">品牌授权正品</a></span>
+                            <span><a href="">品牌客服</a></span>
+                            <span><a href="">预约到店体验</a></span>
+                            <span><a href="">7天无理由退换</a></span>
+                        </li>
+                        <li>
+                            <span class="sp01">使用帮助</span>
+                            <span><a href="">常见问题</a></span>
+                            <span><a href="">会员制度</a></span>
+                            <span><a href="">集团采购</a></span>
+                            <span><a href="">礼品卡</a></span>
+                        </li>
+                        <li>
+                            <span class="sp01">支付方式</span>
+                            <span><a href="">到店付款</a></span>
+                            <span><a href="">货到付款</a></span>
+                            <span><a href="">在线支付</a></span>
+                            <span><a href="">余额支付</a></span>
+                            <span><a href="">分期付款</a></span>
+                        </li>
+                        <li>
+                            <span class="sp01">配送方式</span>
+                            <span><a href="">配送说明</a></span>
+                            <span><a href="">专柜自提</a></span>
+                            <span><a href="">运费说明</a></span>
+                            <span><a href="">验货签收</a></span>
+                        </li>
+                        <li>
+                            <span class="sp01">售后服务</span>
+                            <span><a href="">品牌售后</a></span>
+                            <span><a href="">售后咨询</a></span>
+                            <span><a href="">退换政策</a></span>
+                            <span><a href="">发票保障</a></span>
+                        </li>
+                        <li class="footer_app">
+                            <span class="sp01">第五大道APP</span>
+                            <span><img src="images/footer_message06.jpg" alt=""></span>
+                        </li>
+                        <li class="footer_weibo">
+                            <span class="sp01">第五大道微博</span>
+                            <span><img src="images/footer_message07.jpg" alt=""></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer_btm">
+                <div class="footer_btm_1">
+                    <a href="">箱包</a>
+                    丨
+                    <a href="">美妆</a>
+                    丨
+                    <a href="">服饰</a>
+                    丨
+                    <a href="">腕表</a>
+                    丨
+                    <a href="">配饰</a>
+                    丨
+                    <a href="">鞋靴</a>
+                    丨
+                    <a href="">特惠</a>
+                    丨
+                    <a href="">礼品区</a>  
+                </div>
+                <div>
+                    <a href="">关于第五大道</a>
+                    丨
+                    <a href="">网站地图</a>
+                    丨
+                    <a href="">品牌合作专区</a>
+                    丨
+                    <a href="">媒体聚焦</a>
+                    丨
+                    <a href="">商务合作</a>
+                    丨
+                    <a href="">商家合作</a>
+                    丨
+                    <a href="">加入第五大道</a>
+                    丨
+                    <a href="">奢尚志</a>
+                    丨
+                    <a href="">友情链接</a>
+                    丨
+                    <a href="">联系我们</a>
+                    丨
+                    <a href="">投诉建议</a>
+                    <p>Copyright © 2008-2016 瑞美嘉信国际信息技术（北京）有限公司&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;版权所有京ICP备09012701号-1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;京公网安备110105007400号 食品经营许可证号：
+                    </p>
+                </div>
+                <div class="footer_btm_2">
+                    <a href=""><img src="images/14567178388519.jpg" alt=""></a>
+                    <a href=""><img src="images/footer_message10.jpg" alt=""></a>
+                    <a href=""><img src="images/footer_message11.jpg" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
